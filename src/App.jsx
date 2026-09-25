@@ -1125,9 +1125,14 @@ function App() {
           {/* CONNECTED PLAYER */}
 {gameId && (
   <div className="player-game">
+    <div className="join-card">
+      <p className="muted">
+        ✓ CONNECTED TO GAME
+      </p>
 
-    <div className="player-game-code">
-      {playerGameCode}
+      <div className="game-code">
+        {playerGameCode}
+      </div>
     </div>
 
               {question ? (
