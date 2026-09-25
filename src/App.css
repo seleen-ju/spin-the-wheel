@@ -2682,3 +2682,177 @@ input:focus-visible {
     font-size: clamp(18px, 5vw, 28px);
   }
 }
+/* =====================================================
+   PLAYER SCREEN — FULL QUESTION VIEW
+   ===================================================== */
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Player page fills the available screen */
+.player-page {
+  height: 100vh;
+  max-height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 25px 30px 20px;
+}
+
+/* Header stays compact */
+.player-page .page-heading {
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.player-page .page-heading h1 {
+  font-size: 26px !important;
+  line-height: 1 !important;
+  margin: 4px 0 !important;
+}
+
+.player-page .page-heading p:last-child {
+  margin: 5px 0 0;
+  font-size: 12px;
+}
+
+/* Main game area */
+.player-page .player-game {
+  position: relative;
+
+  flex: 1;
+  min-height: 0;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+/* Tiny game code in the top-right */
+.player-game-code {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  z-index: 10;
+
+  padding: 5px 9px;
+
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+
+  border-radius: 5px;
+
+  opacity: 0.65;
+}
+
+/* Question card takes almost the entire screen */
+.player-page .player-game .question-card {
+  flex: 1;
+  min-height: 0;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: clamp(20px, 3vw, 45px);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top section */
+.player-page .question-top {
+  flex-shrink: 0;
+}
+
+/* Question area */
+.player-page .question-content {
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* BIG CLEAR QUESTION */
+.player-page .question-text {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.15;
+
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Status */
+.player-page .time-up {
+  flex-shrink: 0;
+  margin-top: 18px;
+}
+
+/* Correct answer after round */
+.player-page .answer-preview {
+  flex-shrink: 0;
+
+  max-height: 22%;
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   MOBILE / SMALL SCREEN
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .player-page {
+    padding: 18px 15px 12px;
+  }
+
+  .player-page .page-heading {
+    margin-bottom: 8px;
+  }
+
+  .player-page .page-heading h1 {
+    font-size: 22px !important;
+  }
+
+  .player-page .page-heading p:last-child {
+    font-size: 10px;
+  }
+
+  .player-page .question-text {
+    font-size: clamp(22px, 6vw, 34px);
+  }
+
+  .player-game-code {
+    font-size: 9px;
+    padding: 4px 7px;
+  }
+}

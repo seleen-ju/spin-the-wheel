@@ -1123,18 +1123,12 @@ function App() {
           )}
 
           {/* CONNECTED PLAYER */}
+{gameId && (
+  <div className="player-game">
 
-          {gameId && (
-            <div className="player-game">
-              <div className="join-card">
-                <p className="muted">
-                  ✓ CONNECTED TO GAME
-                </p>
-
-                <div className="game-code">
-                  {playerGameCode}
-                </div>
-              </div>
+    <div className="player-game-code">
+      {playerGameCode}
+    </div>
 
               {question ? (
                 <section className="host-card question-card">
