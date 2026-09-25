@@ -2409,3 +2409,133 @@ input:focus-visible {
     width: 100%;
   }
 }
+/* ===== SMALLER MODE TITLES ===== */
+
+.host-dashboard .host-heading h1,
+.host-dashboard .host-heading h1 span {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.player-page .host-heading h1,
+.player-page .host-heading h1 span {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+
+/* ===== COMPACT PLAYER GAME CODE ===== */
+
+.player-page .game-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  margin: 0 0 12px;
+  width: fit-content;
+  min-width: 0;
+  border-radius: 8px;
+}
+
+.player-page .game-code strong {
+  font-size: 16px;
+  letter-spacing: 2px;
+}
+
+.player-page .game-code span {
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+
+/* Make the whole code area more compact */
+.player-page .game-code-card,
+.player-page .player-game-code {
+  padding: 0;
+  min-height: 0;
+  height: auto;
+  margin-bottom: 12px;
+}
+/* =====================================================
+   SMALLER HOST / PLAYER MODE TITLES
+   ===================================================== */
+
+.host-dashboard .host-heading h1 {
+  font-size: 26px !important;
+  line-height: 1 !important;
+  margin: 4px 0 0 !important;
+}
+
+.host-dashboard .host-heading h1 span {
+  font-size: 26px !important;
+}
+
+.player-page .page-heading h1 {
+  font-size: 26px !important;
+  line-height: 1 !important;
+  margin: 4px 0 0 !important;
+}
+
+.player-page .page-heading h1 span {
+  font-size: 26px !important;
+}
+
+
+/* =====================================================
+   SMALLER PLAYER GAME CODE
+   ===================================================== */
+
+/* The JOIN CARD containing the connected game code */
+.player-game > .join-card {
+  padding: 12px 16px !important;
+  margin-bottom: 14px !important;
+  min-height: 0 !important;
+}
+
+/* "CONNECTED TO GAME" */
+.player-game > .join-card .muted {
+  font-size: 9px !important;
+  margin: 0 0 6px !important;
+}
+
+/* A7K2 */
+.player-game > .join-card .game-code {
+  display: inline-flex !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+
+  padding: 5px 10px !important;
+  margin: 0 !important;
+
+  border-radius: 6px !important;
+
+  font-size: 15px !important;
+  line-height: 1 !important;
+  letter-spacing: 2px !important;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .host-dashboard .host-heading h1,
+  .host-dashboard .host-heading h1 span,
+  .player-page .page-heading h1,
+  .player-page .page-heading h1 span {
+    font-size: 23px !important;
+  }
+
+  .player-game > .join-card {
+    padding: 10px 12px !important;
+  }
+
+  .player-game > .join-card .game-code {
+    padding: 4px 8px !important;
+    font-size: 14px !important;
+  }
+}
