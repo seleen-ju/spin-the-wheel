@@ -276,3 +276,151 @@ h1 span {
   text-align: center;
   letter-spacing: 2px;
 }
+/* =====================================================
+   CATEGORY BUTTONS — AI EXPO COLORS
+===================================================== */
+
+.host-dashboard .category-buttons {
+  display: flex;
+  flex-direction: row;
+
+  gap: 8px;
+
+  width: 100%;
+}
+
+.host-dashboard .category-button {
+  flex: 1;
+
+  height: 46px;
+  min-height: 46px;
+
+  padding: 0 14px;
+
+  border-radius: 7px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 10px;
+  font-weight: 950;
+
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+
+/* -------------------------
+   BEGINNER
+------------------------- */
+
+.host-dashboard .category-button.beginner {
+  background: #ffffff;
+
+  color: #111118;
+
+  border: 1px solid #ffffff;
+}
+
+
+/* -------------------------
+   INTERMEDIATE
+------------------------- */
+
+.host-dashboard .category-button.intermediate {
+  background: #5A297A;
+
+  color: #ffffff;
+
+  border: 1px solid #5A297A;
+}
+
+
+/* -------------------------
+   CHALLENGE
+------------------------- */
+
+.host-dashboard .category-button.challenge {
+  background: #0F1626;
+
+  color: #ffffff;
+
+  border: 1px solid #0F1626;
+}
+
+
+/* -------------------------
+   HOVER
+------------------------- */
+
+.host-dashboard .category-button:hover {
+  transform: translateY(-2px);
+
+  filter: brightness(1.08);
+}
+
+
+/* -------------------------
+   SELECTED
+------------------------- */
+
+.host-dashboard .category-button.selected {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.22);
+}
+
+
+/* Beginner selected */
+.host-dashboard .category-button.beginner.selected {
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.65),
+    0 5px 18px rgba(0, 0, 0, 0.20);
+}
+
+
+/* Intermediate selected */
+.host-dashboard .category-button.intermediate.selected {
+  box-shadow:
+    0 0 0 2px rgba(90, 41, 122, 0.65),
+    0 5px 20px rgba(90, 41, 122, 0.30);
+}
+
+
+/* Challenge selected */
+.host-dashboard .category-button.challenge.selected {
+  box-shadow:
+    0 0 0 2px rgba(15, 22, 38, 0.70),
+    0 5px 20px rgba(15, 22, 38, 0.35);
+}
+
+
+/* =====================================================
+   CATEGORY RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .host-dashboard .category-buttons {
+    gap: 6px;
+  }
+
+  .host-dashboard .category-button {
+    height: 42px;
+    min-height: 42px;
+
+    padding: 0 7px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.7px;
+  }
+}

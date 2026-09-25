@@ -1319,3 +1319,1093 @@ input:focus-visible {
 
   border-radius: 8px;
 }
+/* =====================================================
+   HOST MODE — COMPACT EVENT DASHBOARD
+===================================================== */
+
+.host-page {
+  width: min(1150px, 94%);
+  margin: 0 auto;
+  padding: 35px 0 45px;
+}
+
+/* Smaller heading */
+.host-page .page-heading {
+  margin-bottom: 20px;
+}
+
+.host-page .page-heading h1 {
+  font-size: clamp(38px, 5vw, 58px);
+}
+
+.host-page .page-heading > p:last-child {
+  margin-top: 8px;
+}
+
+
+/* =====================================================
+   COMPACT HOST CARDS
+===================================================== */
+
+.host-page .host-card {
+  margin-bottom: 12px;
+  padding: 18px 22px;
+  border-radius: 14px;
+}
+
+
+/* =====================================================
+   GAME CODE — SMALL + COMPACT
+===================================================== */
+
+.host-page .game-code {
+  min-width: auto;
+  width: fit-content;
+  height: 34px;
+
+  padding: 0 12px;
+
+  border-radius: 8px;
+
+  background: rgba(124, 58, 237, 0.10);
+  border: 1px solid rgba(168, 85, 247, 0.30);
+
+  color: #f8fafc;
+
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: 4px;
+
+  margin-bottom: 5px;
+}
+
+.host-page .host-card:has(.game-code) {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 12px 18px;
+}
+
+.host-page .host-card:has(.game-code) .card-label {
+  margin: 0;
+}
+
+.host-page .host-card:has(.game-code) .muted {
+  margin: 0;
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   CATEGORY — ONE COMPACT ROW
+===================================================== */
+
+.host-page .category-buttons {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.host-page .category-button {
+  min-height: 62px;
+
+  flex-direction: row;
+
+  border-radius: 11px;
+
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.host-page .category-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* Selected category */
+.host-page .category-button.selected {
+  border-color: #a855f7;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.18),
+      rgba(37, 99, 235, 0.10)
+    );
+
+  box-shadow:
+    0 0 22px rgba(124, 58, 237, 0.15);
+}
+
+
+/* =====================================================
+   QUESTION CARD — LESS HEIGHT
+===================================================== */
+
+.host-page .question-card {
+  padding: 20px 22px;
+}
+
+.host-page .question-top {
+  margin-bottom: 12px;
+}
+
+.host-page .question-content {
+  padding-top: 0;
+}
+
+.host-page .question-text {
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.2;
+
+  margin-bottom: 12px;
+}
+
+
+/* Smaller timer */
+.host-page .timer {
+  width: 68px;
+  height: 68px;
+
+  font-size: 25px;
+}
+
+
+/* =====================================================
+   RANDOMIZE — CLEAR MAIN ACTION
+===================================================== */
+
+.host-page .question-card + .host-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.host-page .question-card + .host-card .card-label {
+  margin: 0;
+}
+
+.host-page .question-card + .host-card .primary-button {
+  min-width: 230px;
+}
+
+
+/* =====================================================
+   BUZZER BUTTONS — BIG + OBVIOUS
+===================================================== */
+
+.host-page .buzzer-controls {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+.host-page .buzzer-button {
+  min-height: 65px;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.14),
+      rgba(37, 99, 235, 0.08)
+    );
+
+  border: 1px solid rgba(168, 85, 247, 0.30);
+
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+
+  color: #ffffff;
+}
+
+.host-page .buzzer-button:hover {
+  border-color: #a855f7;
+
+  box-shadow:
+    0 0 22px rgba(168, 85, 247, 0.20);
+
+  transform: translateY(-2px);
+}
+
+.host-page .buzzer-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* =====================================================
+   ANSWER CONTROL — VERY CLEAR
+===================================================== */
+
+.host-page .answer-controls {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+.host-page .correct-button,
+.host-page .wrong-button {
+  min-height: 65px;
+
+  border-radius: 12px;
+
+  font-size: 14px;
+  font-weight: 950;
+  letter-spacing: 1.5px;
+}
+
+.host-page .correct-button {
+  box-shadow:
+    0 0 18px rgba(34, 197, 94, 0.08);
+}
+
+.host-page .wrong-button {
+  box-shadow:
+    0 0 18px rgba(239, 68, 68, 0.08);
+}
+
+
+/* =====================================================
+   ROUND ACTIONS
+===================================================== */
+
+.host-page .host-actions {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  padding-top: 0;
+}
+
+.host-page .host-actions button {
+  min-height: 55px;
+}
+
+
+/* =====================================================
+   RESET — SMALLER
+===================================================== */
+
+.host-page > .host-card:last-child {
+  padding: 10px 0;
+
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.host-page > .host-card:last-child .secondary-button {
+  opacity: 0.65;
+
+  font-size: 10px;
+  padding: 9px 16px;
+}
+
+
+/* =====================================================
+   ANSWER PREVIEW — COMPACT
+===================================================== */
+
+.host-page .answer-preview {
+  margin: 10px 0 0;
+
+  padding: 10px 14px;
+
+  border-radius: 10px;
+
+  gap: 3px;
+}
+
+.host-page .answer-preview .card-label {
+  margin-bottom: 2px;
+}
+
+.host-page .answer-text {
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   STATUS MESSAGE — COMPACT
+===================================================== */
+
+.host-page .time-up {
+  margin-top: 10px;
+  margin-bottom: 8px;
+
+  padding: 11px;
+
+  border-radius: 10px;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   HOST RESPONSIVE
+===================================================== */
+
+@media (max-width: 750px) {
+
+  .host-page {
+    width: 94%;
+    padding-top: 25px;
+  }
+
+  .host-page .host-card {
+    padding: 16px;
+  }
+
+  .host-page .category-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .host-page .question-card + .host-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .host-page .question-card + .host-card .primary-button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 550px) {
+
+  .host-page .buzzer-controls,
+  .host-page .answer-controls,
+  .host-page .host-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .host-page .host-card:has(.game-code) {
+    flex-wrap: wrap;
+  }
+
+  .host-page .question-text {
+    font-size: 22px;
+  }
+}
+/* =====================================================
+   NEW HOST DASHBOARD
+===================================================== */
+
+.host-dashboard {
+  width: min(1150px, 94%);
+  padding-top: 30px;
+  padding-bottom: 40px;
+}
+
+
+/* =====================================================
+   NAV GAME CODE
+===================================================== */
+
+.host-nav-code {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px;
+
+  border-radius: 8px;
+
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+}
+
+.host-nav-code span {
+  color: #71717a;
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.host-nav-code strong {
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 900;
+
+  letter-spacing: 3px;
+}
+
+
+/* =====================================================
+   HOST HEADER
+===================================================== */
+
+.host-heading {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 20px;
+}
+
+.host-heading .eyebrow {
+  margin-bottom: 8px;
+}
+
+.host-heading h1 {
+  margin: 0;
+}
+
+.host-heading-description {
+  color: #71717a;
+
+  font-size: 13px;
+
+  margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   CREATE GAME
+===================================================== */
+
+.create-game-card {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding: 20px 24px;
+}
+
+.create-game-card .muted {
+  margin-bottom: 0;
+}
+
+.create-game-card h2 {
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+.create-game-button {
+  flex-shrink: 0;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.category-card {
+  padding: 17px 20px;
+}
+
+.section-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 12px;
+}
+
+.section-heading .card-label {
+  margin-bottom: 3px;
+}
+
+.section-heading h2 {
+  font-size: 17px;
+  margin: 0;
+}
+
+
+/* Small category buttons */
+.host-dashboard .category-buttons {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 9px;
+}
+
+.host-dashboard .category-button {
+  min-height: 50px;
+
+  padding: 0 14px;
+
+  flex-direction: row;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.host-dashboard .category-button span {
+  font-size: 15px;
+}
+
+.host-dashboard .category-button strong {
+  font-size: 10px;
+  letter-spacing: 1.2px;
+}
+
+.host-dashboard .category-button.selected {
+  transform: none;
+
+  background: rgba(124, 58, 237, 0.10);
+
+  border-color: rgba(168, 85, 247, 0.55);
+
+  box-shadow:
+    0 0 18px rgba(124, 58, 237, 0.10);
+}
+
+.host-dashboard .category-button.beginner.selected {
+  border-color: rgba(34, 197, 94, 0.65);
+}
+
+.host-dashboard .category-button.intermediate.selected {
+  border-color: rgba(234, 179, 8, 0.65);
+}
+
+.host-dashboard .category-button.challenge.selected {
+  border-color: rgba(239, 68, 68, 0.65);
+}
+
+
+/* =====================================================
+   RANDOMIZE BUTTON
+===================================================== */
+
+.randomize-button {
+  border: 1px solid rgba(168, 85, 247, 0.35);
+
+  background: rgba(124, 58, 237, 0.08);
+
+  color: #d8b4fe;
+
+  padding: 9px 14px;
+
+  border-radius: 8px;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  transition: 0.2s ease;
+}
+
+.randomize-button:hover:not(:disabled) {
+  background: rgba(124, 58, 237, 0.16);
+
+  border-color: #a855f7;
+
+  color: #ffffff;
+}
+
+.randomize-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   QUESTION
+===================================================== */
+
+.host-dashboard .question-card {
+  padding: 22px 25px;
+
+  margin-bottom: 12px;
+}
+
+.host-dashboard .question-top {
+  margin-bottom: 14px;
+}
+
+.question-heading {
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  color: #71717a;
+}
+
+.host-dashboard .timer {
+  width: 65px;
+  height: 65px;
+
+  font-size: 23px;
+}
+
+.host-dashboard .question-text {
+  max-width: 950px;
+
+  font-size: clamp(23px, 3vw, 34px);
+
+  line-height: 1.2;
+
+  margin-bottom: 10px;
+}
+
+.question-empty {
+  min-height: 105px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  text-align: left;
+
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+
+  border-radius: 10px;
+
+  padding: 18px;
+}
+
+.waiting-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(124, 58, 237, 0.10);
+
+  color: #a855f7;
+
+  font-weight: 900;
+}
+
+.question-empty strong {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.question-empty p {
+  margin-top: 4px;
+
+  color: #71717a;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   PLAYER TURN / STATUS
+===================================================== */
+
+.player-turn {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 7px 12px;
+
+  border-radius: 7px;
+
+  background: rgba(124, 58, 237, 0.10);
+
+  border: 1px solid rgba(168, 85, 247, 0.22);
+
+  color: #d8b4fe;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+.status-box {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  width: fit-content;
+
+  padding: 8px 14px;
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+.status-box span {
+  color: #71717a;
+
+  font-size: 9px;
+}
+
+.status-box.correct {
+  color: #4ade80;
+
+  border-color: rgba(34, 197, 94, 0.25);
+
+  background: rgba(34, 197, 94, 0.06);
+}
+
+.status-box.wrong {
+  color: #f87171;
+
+  border-color: rgba(239, 68, 68, 0.25);
+
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.status-box.time {
+  color: #fbbf24;
+
+  border-color: rgba(234, 179, 8, 0.25);
+
+  background: rgba(234, 179, 8, 0.05);
+}
+
+.waiting-player {
+  color: #71717a;
+
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   ANSWER PREVIEW
+===================================================== */
+
+.host-dashboard .answer-preview {
+  margin: 12px 0 0;
+
+  padding: 9px 13px;
+
+  border-radius: 8px;
+
+  display: flex;
+
+  flex-direction: row;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.host-dashboard .answer-preview .card-label {
+  margin: 0;
+}
+
+.host-dashboard .answer-text {
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   CONTROL CARD
+===================================================== */
+
+.control-card {
+  padding: 14px 18px;
+
+  margin-bottom: 10px;
+}
+
+.control-title {
+  color: #71717a;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 8px;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   PLAYER BUTTONS — SMALL BUT VERY CLEAR
+===================================================== */
+
+.host-dashboard .buzzer-controls {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.host-dashboard .buzzer-button {
+  min-height: 52px;
+
+  border-radius: 9px;
+
+  border: 1px solid rgba(168, 85, 247, 0.28);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124, 58, 237, 0.10),
+      rgba(37, 99, 235, 0.05)
+    );
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+
+  transition: 0.2s ease;
+}
+
+.host-dashboard .buzzer-button:hover:not(:disabled) {
+  border-color: #a855f7;
+
+  background: rgba(124, 58, 237, 0.15);
+
+  transform: translateY(-1px);
+}
+
+.host-dashboard .buzzer-button:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   CORRECT / WRONG
+===================================================== */
+
+.host-dashboard .answer-controls {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.host-dashboard .correct-button,
+.host-dashboard .wrong-button {
+  min-height: 52px;
+
+  border-radius: 9px;
+
+  font-size: 12px;
+
+  font-weight: 950;
+
+  letter-spacing: 1px;
+
+  transition: 0.2s ease;
+}
+
+.host-dashboard .correct-button {
+  background: rgba(34, 197, 94, 0.07);
+
+  border: 1px solid rgba(34, 197, 94, 0.30);
+
+  color: #4ade80;
+}
+
+.host-dashboard .wrong-button {
+  background: rgba(239, 68, 68, 0.07);
+
+  border: 1px solid rgba(239, 68, 68, 0.30);
+
+  color: #f87171;
+}
+
+
+/* =====================================================
+   ROUND ACTIONS
+===================================================== */
+
+.round-actions {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 8px;
+}
+
+.spin-again-button {
+  min-width: 210px;
+
+  min-height: 48px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #2563eb
+    );
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 950;
+
+  letter-spacing: 1.5px;
+
+  box-shadow:
+    0 8px 25px rgba(124, 58, 237, 0.20);
+
+  transition: 0.2s ease;
+}
+
+.spin-again-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(124, 58, 237, 0.32);
+}
+
+.end-round-button {
+  min-height: 48px;
+
+  padding: 0 17px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  color: #a1a1aa;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+.reset-area {
+  text-align: center;
+
+  margin-top: 14px;
+}
+
+.reset-area .reset-button {
+  padding: 7px 12px;
+
+  font-size: 8px;
+
+  opacity: 0.45;
+
+  border-radius: 7px;
+}
+
+
+/* =====================================================
+   HOST MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  .host-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .host-nav-code {
+    position: static;
+
+    transform: none;
+
+    margin-left: auto;
+  }
+
+  .section-heading {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .randomize-button {
+    width: 100%;
+  }
+
+  .host-dashboard .category-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .host-dashboard .buzzer-controls,
+  .host-dashboard .answer-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .round-actions {
+    flex-direction: column-reverse;
+  }
+
+  .spin-again-button,
+  .end-round-button {
+    width: 100%;
+  }
+}
