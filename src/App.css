@@ -2539,3 +2539,146 @@ input:focus-visible {
     font-size: 14px !important;
   }
 }
+/* =====================================================
+   PLAYER SCREEN — NO SCROLL
+   ===================================================== */
+
+/* The Player page itself */
+.player-page {
+  height: 100vh;
+  max-height: 100vh;
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 35px 0 25px;
+}
+
+/* Player heading */
+.player-page .page-heading {
+  flex-shrink: 0;
+  margin-bottom: 18px;
+}
+
+/* Keep PLAYER SCREEN title compact */
+.player-page .page-heading h1 {
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1;
+  margin: 5px 0;
+}
+
+/* Connected player area takes remaining screen */
+.player-page .player-game {
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+/* Connected game code */
+.player-page .player-game > .join-card {
+  flex-shrink: 0;
+
+  padding: 8px 12px;
+  margin-bottom: 12px;
+
+  min-height: 0;
+}
+
+/* Game code itself */
+.player-page .player-game .game-code {
+  display: inline-flex;
+
+  width: fit-content;
+  min-width: 0;
+
+  padding: 4px 9px;
+
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 2px;
+
+  border-radius: 6px;
+}
+
+/* Question card uses remaining space */
+.player-page .player-game .question-card {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+
+  margin-bottom: 0;
+  padding: clamp(14px, 2vw, 25px);
+
+  overflow: hidden;
+}
+
+/* Question top stays visible */
+.player-page .player-game .question-top {
+  flex-shrink: 0;
+}
+
+/* Question content fills available space */
+.player-page .player-game .question-content {
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* Question automatically gets smaller if needed */
+.player-page .player-game .question-text {
+  font-size: clamp(22px, 3vw, 42px);
+  line-height: 1.2;
+
+  max-width: 100%;
+
+  overflow-wrap: anywhere;
+}
+
+/* Answer should stay visible without creating scroll */
+.player-page .player-game .answer-preview {
+  flex-shrink: 0;
+  max-height: 25%;
+  overflow: hidden;
+}
+
+/* Make status messages compact */
+.player-page .player-game .time-up {
+  flex-shrink: 0;
+  margin-top: 12px;
+}
+
+
+/* =====================================================
+   SMALL SCREENS
+   ===================================================== */
+
+@media (max-width: 700px) {
+
+  .player-page {
+    padding: 25px 0 15px;
+  }
+
+  .player-page .page-heading {
+    margin-bottom: 10px;
+  }
+
+  .player-page .page-heading h1 {
+    font-size: 24px;
+  }
+
+  .player-page .player-game .question-text {
+    font-size: clamp(18px, 5vw, 28px);
+  }
+}
