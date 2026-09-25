@@ -697,12 +697,11 @@ function App() {
         </div>
 
         {gameId && (
-          <div className="host-nav-code">
-            <span>GAME</span>
-            <strong>{gameCode}</strong>
-          </div>
-        )}
-
+  <div className="host-nav-code">
+    <span>GAME CODE</span>
+    <strong>{gameCode}</strong>
+  </div>
+)}
         <button
           className="nav-back"
           onClick={() => setScreen("home")}

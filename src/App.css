@@ -1101,6 +1101,7 @@ button:disabled {
   }
 }
 
+
 /* =========================================================
    PLAYER SCREEN — COMPACT FOCUS
    Only affects Player Screen
@@ -1130,7 +1131,9 @@ button:disabled {
   font-size: 10px;
 }
 
+
 /* Connected game code */
+
 .player-game > .join-card {
   margin-bottom: 8px;
   padding: 7px 12px;
@@ -1148,12 +1151,16 @@ button:disabled {
   letter-spacing: 1.5px;
 }
 
+
 /* Main question card */
+
 .player-game .question-card {
   padding: 16px 20px;
 }
 
+
 /* Category + timer */
+
 .player-game .question-top {
   margin-bottom: 8px;
 }
@@ -1173,7 +1180,9 @@ button:disabled {
   font-size: 22px;
 }
 
+
 /* Give the question the main focus */
+
 .player-game .question-content {
   min-height: 190px;
   padding: 8px 5px;
@@ -1185,12 +1194,14 @@ button:disabled {
 }
 
 .player-game .question-text {
-  font-size: clamp(21px, 3vw, 36px);
-  line-height: 1.1;
+  font-size: clamp(26px, 3.5vw, 42px);
+  line-height: 1.15;
   max-width: 900px;
 }
 
+
 /* Player turn / status */
+
 .player-game .time-up {
   margin-top: 10px;
   padding: 7px 12px;
@@ -1198,13 +1209,17 @@ button:disabled {
   line-height: 1.25;
 }
 
+
 /* Waiting message */
+
 .player-game .question-content > .muted {
   font-size: 9px;
   margin-top: 8px;
 }
 
+
 /* Correct answer after the round */
+
 .player-game .answer-preview {
   margin-top: 8px;
   padding: 9px 12px;
@@ -1222,6 +1237,7 @@ button:disabled {
 
 
 /* Smaller screens / iPad portrait */
+
 @media (max-width: 900px) {
 
   .player-page {
@@ -1251,7 +1267,7 @@ button:disabled {
   }
 
   .player-game .question-text {
-    font-size: clamp(20px, 4vw, 32px);
+    font-size: clamp(23px, 4vw, 36px);
   }
 
   .player-game .timer {
@@ -1263,6 +1279,7 @@ button:disabled {
 
 
 /* Small height screens */
+
 @media (max-height: 750px) {
 
   .player-page {
@@ -1311,7 +1328,7 @@ button:disabled {
   }
 
   .player-game .question-text {
-    font-size: clamp(18px, 3vw, 28px);
+    font-size: clamp(20px, 3vw, 32px);
     line-height: 1.05;
   }
 
@@ -1326,4 +1343,26 @@ button:disabled {
     padding: 6px 10px;
   }
 }
+.host-nav-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+}
 
+.host-nav-code span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #a1a1aa;
+}
+
+.host-nav-code strong {
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #c084fc;
+}
