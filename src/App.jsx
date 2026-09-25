@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { supabase } from "./supabase";
 import "./App.css";
@@ -30,17 +29,32 @@ function App() {
       return;
     }
 
+    if (
+      roundStatus === "correct" ||
+      roundStatus === "no_correct_answer" ||
+      roundStatus === "time_up" ||
+      roundStatus === "ended"
+    ) {
+      return;
+    }
+
     if (timeLeft <= 0) {
       handleTimeUp();
       return;
     }
 
     const timer = setInterval(() => {
-      setTimeLeft((currentTime) => currentTime - 1);
+      setTimeLeft((currentTime) => {
+        if (currentTime <= 1) {
+          return 0;
+        }
+
+        return currentTime - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [question, timeLeft, timeUp]);
+  }, [question, timeLeft, timeUp, roundStatus]);
 
   // --------------------------------------------------
   // REALTIME
@@ -255,11 +269,9 @@ function App() {
         correct_answer: selectedQuestion.answer,
         time_started: startTime,
         time_limit: 30,
-
         current_player: null,
         first_buzzed_player: null,
         answer_attempt: 0,
-
         round_status: "active",
       })
       .eq("id", gameId)
@@ -302,13 +314,11 @@ function App() {
       return;
     }
 
-    // After player 1 is wrong, player 2 gets a direct chance.
     if (roundStatus === "wrong") {
       alert("Player 2 already has the chance to answer.");
       return;
     }
 
-    // Only first buzzer is accepted.
     if (currentPlayer !== null) {
       return;
     }
@@ -444,131 +454,114 @@ function App() {
   // --------------------------------------------------
   // TIME UP
   // --------------------------------------------------
-async function handleTimeUp() {
-  if (!gameId || !question) {
-    return;
+
+  async function handleTimeUp() {
+    if (!gameId || !question) {
+      return;
+    }
+
+    if (
+      roundStatus === "time_up" ||
+      roundStatus === "correct" ||
+      roundStatus === "no_correct_answer" ||
+      roundStatus === "ended"
+    ) {
+      return;
+    }
+
+    console.log("TIME'S UP");
+
+    const { data, error } = await supabase
+      .from("games")
+      .update({
+        round_status: "time_up",
+        current_player: null,
+      })
+      .eq("id", gameId)
+      .select()
+      .single();
+
+    if (error) {
+      console.error("TIME UP ERROR:", error);
+      return;
+    }
+
+    console.log("ROUND TIME UP:", data);
+
+    setTimeLeft(0);
+    setTimeUp(true);
+    setCurrentPlayer(null);
+    setRoundStatus("time_up");
   }
 
-  // Prevent the function from running more than once
-  if (
-    roundStatus === "time_up" ||
-    roundStatus === "correct" ||
-    roundStatus === "no_correct_answer"
-  ) {
-    return;
+  // --------------------------------------------------
+  // SPIN AGAIN
+  // --------------------------------------------------
+
+  async function spinAgain() {
+    if (!gameId) {
+      alert("Please create a game first.");
+      return;
+    }
+
+    if (!category) {
+      alert("Please select a category first.");
+      return;
+    }
+
+    const categoryQuestions = questions[category];
+
+    if (
+      !categoryQuestions ||
+      categoryQuestions.length === 0
+    ) {
+      alert("No questions found for this category.");
+      return;
+    }
+
+    const randomIndex = Math.floor(
+      Math.random() * categoryQuestions.length
+    );
+
+    const selectedQuestion =
+      categoryQuestions[randomIndex];
+
+    const startTime = new Date().toISOString();
+
+    console.log("STARTING NEXT ROUND...");
+
+    const { data, error } = await supabase
+      .from("games")
+      .update({
+        category: category,
+        question: selectedQuestion.question,
+        correct_answer: selectedQuestion.answer,
+        time_started: startTime,
+        time_limit: 30,
+        current_player: null,
+        first_buzzed_player: null,
+        answer_attempt: 0,
+        round_status: "active",
+      })
+      .eq("id", gameId)
+      .select()
+      .single();
+
+    if (error) {
+      console.error("SPIN AGAIN ERROR:", error);
+      alert("Could not start the next round.");
+      return;
+    }
+
+    console.log("NEXT ROUND:", data);
+
+    setQuestion(selectedQuestion.question);
+    setCorrectAnswer(selectedQuestion.answer);
+    setTimeLeft(30);
+    setTimeUp(false);
+    setCurrentPlayer(null);
+    setRoundStatus("active");
   }
-
-  console.log("TIME'S UP");
-
-  const { data, error } = await supabase
-    .from("games")
-    .update({
-      round_status: "time_up",
-      current_player: null,
-    })
-    .eq("id", gameId)
-    .select()
-    .single();
-
-  if (error) {
-    console.error("TIME UP ERROR:", error);
-    return;
-  }
-
-  console.log("ROUND TIME UP:", data);
-
-  setTimeLeft(0);
-  setTimeUp(true);
-  setCurrentPlayer(null);
-  setRoundStatus("time_up");
-}
-
-
-async function spinAgain() {
-  if (!gameId) {
-    alert("Please create a game first.");
-    return;
-  }
-
-  if (!category) {
-    alert("Please select a category first.");
-    return;
-  }
-
-  const categoryQuestions = questions[category];
-
-  if (
-    !categoryQuestions ||
-    categoryQuestions.length === 0
-  ) {
-    alert("No questions found for this category.");
-    return;
-  }
-
-  const randomIndex = Math.floor(
-    Math.random() * categoryQuestions.length
-  );
-
-  const selectedQuestion =
-    categoryQuestions[randomIndex];
-
-  const startTime = new Date().toISOString();
-
-  console.log("STARTING NEXT ROUND...");
-
-  const { data, error } = await supabase
-    .from("games")
-    .update({
-      // SAME GAME
-      // SAME GAME CODE
-      // SAME GAME ID
-
-      category: category,
-
-      question: selectedQuestion.question,
-
-      correct_answer: selectedQuestion.answer,
-
-      time_started: startTime,
-
-      time_limit: 30,
-
-      // Reset round-specific state
-      current_player: null,
-
-      first_buzzed_player: null,
-
-      answer_attempt: 0,
-
-      round_status: "active",
-    })
-    .eq("id", gameId)
-    .select()
-    .single();
-
-  if (error) {
-    console.error("SPIN AGAIN ERROR:", error);
-    alert("Could not start the next round.");
-    return;
-  }
-
-  console.log("NEXT ROUND:", data);
-
-  // Reset local state
-  setQuestion(selectedQuestion.question);
-
-  setCorrectAnswer(selectedQuestion.answer);
-
-  setTimeLeft(30);
-
-  setTimeUp(false);
-
-  setCurrentPlayer(null);
-
-  setRoundStatus("active");
-}
-
-  
 
   // --------------------------------------------------
   // END ROUND
@@ -598,49 +591,48 @@ async function spinAgain() {
   // RESET GAME
   // --------------------------------------------------
 
-async function resetGame() {
-  if (gameId) {
-    const { error } = await supabase
-      .from("games")
-      .update({
-        category: null,
-        question: null,
-        correct_answer: null,
-        time_started: null,
-        time_limit: 30,
-        current_player: null,
-        first_buzzed_player: null,
-        answer_attempt: 0,
-        round_status: "waiting",
-      })
-      .eq("id", gameId);
+  async function resetGame() {
+    if (gameId) {
+      const { error } = await supabase
+        .from("games")
+        .update({
+          category: null,
+          question: null,
+          correct_answer: null,
+          time_started: null,
+          time_limit: 30,
+          current_player: null,
+          first_buzzed_player: null,
+          answer_attempt: 0,
+          round_status: "waiting",
+        })
+        .eq("id", gameId);
 
-    if (error) {
-      console.error("RESET GAME ERROR:", error);
-      alert("Could not reset the game.");
-      return;
+      if (error) {
+        console.error("RESET GAME ERROR:", error);
+        alert("Could not reset the game.");
+        return;
+      }
     }
+
+    console.log("GAME RESET");
+
+    setGameId(null);
+    setGameCode("");
+    setPlayerGameCode("");
+
+    setCategory("");
+    setQuestion("");
+    setCorrectAnswer("");
+
+    setTimeLeft(30);
+    setTimeUp(false);
+
+    setCurrentPlayer(null);
+    setRoundStatus("waiting");
+
+    setScreen("home");
   }
-
-  console.log("GAME RESET");
-
-  setGameId(null);
-  setGameCode("");
-  setPlayerGameCode("");
-
-  setCategory("");
-  setQuestion("");
-  setCorrectAnswer("");
-
-  setTimeLeft(30);
-  setTimeUp(false);
-
-  setCurrentPlayer(null);
-  setRoundStatus("waiting");
-
-  setScreen("home");
-}
-
 
   // --------------------------------------------------
   // HOME SCREEN
@@ -870,16 +862,17 @@ async function resetGame() {
                     </div>
 
                     {/* CURRENT PLAYER */}
-{currentPlayer &&
-  roundStatus !== "correct" &&
-  roundStatus !== "no_correct_answer" &&
-  roundStatus !== "time_up" &&
-  roundStatus !== "ended" && (
-    <div className="time-up">
-      🎤 PLAYER {currentPlayer}'S TURN
-    </div>
-  )}
 
+                    {currentPlayer &&
+                      roundStatus !== "correct" &&
+                      roundStatus !==
+                        "no_correct_answer" &&
+                      roundStatus !== "time_up" &&
+                      roundStatus !== "ended" && (
+                        <div className="time-up">
+                          🎤 PLAYER {currentPlayer}'S TURN
+                        </div>
+                      )}
 
                     {/* TIME UP */}
 
@@ -943,24 +936,19 @@ async function resetGame() {
                   </div>
                 )}
 
-                {/* CORRECT ANSWER */}
+                {/* CORRECT ANSWER - HOST CAN ALWAYS SEE IT */}
 
-                {question &&
-                  (roundStatus === "correct" ||
-                    roundStatus ===
-                      "no_correct_answer" ||
-                    roundStatus === "time_up" ||
-                    roundStatus === "ended") && (
-                    <div className="answer-preview">
-                      <div className="card-label">
-                        CORRECT ANSWER
-                      </div>
-
-                      <div className="answer-text">
-                        {correctAnswer}
-                      </div>
+                {correctAnswer && (
+                  <div className="answer-preview">
+                    <div className="card-label">
+                      CORRECT ANSWER
                     </div>
-                  )}
+
+                    <div className="answer-text">
+                      {correctAnswer}
+                    </div>
+                  </div>
+                )}
               </section>
 
               {/* RANDOMIZE */}
@@ -1196,13 +1184,18 @@ async function resetGame() {
                       {question}
                     </div>
 
-                    {/* PLAYER 1 TURN */}
+                    {/* PLAYER TURN */}
 
-                    {currentPlayer && (
-                      <div className="time-up">
-                        🎤 PLAYER {currentPlayer}'S TURN
-                      </div>
-                    )}
+                    {currentPlayer &&
+                      roundStatus !== "correct" &&
+                      roundStatus !==
+                        "no_correct_answer" &&
+                      roundStatus !== "time_up" &&
+                      roundStatus !== "ended" && (
+                        <div className="time-up">
+                          🎤 PLAYER {currentPlayer}'S TURN
+                        </div>
+                      )}
 
                     {/* CORRECT */}
 
@@ -1265,24 +1258,24 @@ async function resetGame() {
                       )}
                   </div>
 
-                  {/* CORRECT ANSWER IS ONLY SHOWN
-                      AFTER THE ROUND ENDS */}
+                  {/* CORRECT ANSWER - PLAYER SEES IT ONLY AFTER ROUND ENDS */}
 
                   {(roundStatus === "correct" ||
                     roundStatus ===
                       "no_correct_answer" ||
                     roundStatus === "time_up" ||
-                    roundStatus === "ended") && (
-                    <div className="answer-preview">
-                      <div className="card-label">
-                        CORRECT ANSWER
-                      </div>
+                    roundStatus === "ended") &&
+                    correctAnswer && (
+                      <div className="answer-preview">
+                        <div className="card-label">
+                          CORRECT ANSWER
+                        </div>
 
-                      <div className="answer-text">
-                        {correctAnswer}
+                        <div className="answer-text">
+                          {correctAnswer}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
                 </section>
               ) : (
                 <section className="host-card question-card">
