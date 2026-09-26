@@ -6,16 +6,35 @@ import { questions } from "./questions";
 function App() {
   const [screen, setScreen] = useState("home");
   const [isFullscreen, setIsFullscreen] = useState(false);
-
-  function toggleFullscreen() {
+async function toggleFullscreen() {
+  try {
     if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
+      await document.documentElement.requestFullscreen();
     } else {
-      document.exitFullscreen();
-      setIsFullscreen(false);
+      await document.exitFullscreen();
     }
+  } catch (error) {
+    console.error("Fullscreen error:", error);
   }
+}
+
+useEffect(() => {
+  function handleFullscreenChange() {
+    setIsFullscreen(!!document.fullscreenElement);
+  }
+
+  document.addEventListener(
+    "fullscreenchange",
+    handleFullscreenChange
+  );
+
+  return () => {
+    document.removeEventListener(
+      "fullscreenchange",
+      handleFullscreenChange
+    );
+  };
+}, []);
 
   const [gameCode, setGameCode] = useState("");
   const [playerGameCode, setPlayerGameCode] = useState("");
