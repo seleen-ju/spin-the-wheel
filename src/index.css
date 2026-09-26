@@ -1365,14 +1365,11 @@ button:disabled {
     line-height: 1.05;
   }
 
-  .player-game .time-up {
-    margin-top: 7px;
-
-    padding: 6px 10px;
-
-    font-size: 8px;
-  }
-
+ .player-game .time-up {
+  margin-top: 12px;
+  padding: 10px 12px;
+  font-size: 20px !important;
+}
   .player-game .answer-preview {
     margin-top: 6px;
 
