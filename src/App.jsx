@@ -5,6 +5,17 @@ import { questions } from "./questions";
 
 function App() {
   const [screen, setScreen] = useState("home");
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  }
 
   const [gameCode, setGameCode] = useState("");
   const [playerGameCode, setPlayerGameCode] = useState("");
@@ -387,6 +398,7 @@ function App() {
 
     // First answer is wrong.
     // The other player gets exactly one chance.
+
     if (
       roundStatus === "answering" &&
       currentPlayer !== null
@@ -423,6 +435,7 @@ function App() {
 
     // Second answer is wrong.
     // Round is now completely finished.
+
     if (
       roundStatus === "wrong" &&
       currentPlayer !== null
@@ -641,7 +654,14 @@ function App() {
   if (screen === "home") {
     return (
       <div className="app">
-      
+        <button
+          className="fullscreen-button"
+          onClick={toggleFullscreen}
+        >
+          {isFullscreen
+            ? "⛶ EXIT FULL SCREEN"
+            : "⛶ FULL SCREEN"}
+        </button>
 
         <main className="home-page">
           <div className="home-content">
@@ -684,376 +704,385 @@ function App() {
   // HOST SCREEN
   // --------------------------------------------------
 
- if (screen === "host") {
-  return (
-    <div className="app">
-      <nav className="navbar">
-        <div className="logo">
-          AI <span>EXPO</span> 2026
-        </div>
-
-        {gameId && (
-  <div className="host-nav-code">
-    <span>GAME CODE</span>
-    <strong>{gameCode}</strong>
-  </div>
-)}
-        <button
-          className="nav-back"
-          onClick={() => setScreen("home")}
-        >
-          ← BACK
-        </button>
-      </nav>
-
-      <main className="host-page host-dashboard">
-
-        {/* HEADER */}
-        <div className="host-heading">
-          <div>
-            <p className="eyebrow">AI EXPO 2026</p>
-
-            <h1>
-              HOST <span>MODE</span>
-            </h1>
+  if (screen === "host") {
+    return (
+      <div className="app">
+        <nav className="navbar">
+          <div className="logo">
+            AI <span>EXPO</span> 2026
           </div>
 
-          <p className="host-heading-description">
-            Control the challenge from this screen.
-          </p>
-        </div>
+          {gameId && (
+            <div className="host-nav-code">
+              <span>GAME CODE</span>
+              <strong>{gameCode}</strong>
+            </div>
+          )}
 
+          <button
+            className="nav-back"
+            onClick={() => setScreen("home")}
+          >
+            ← BACK
+          </button>
+        </nav>
 
-        {/* CREATE GAME */}
-        {!gameId && (
-          <section className="host-card create-game-card">
+        <main className="host-page host-dashboard">
+
+          {/* HEADER */}
+
+          <div className="host-heading">
             <div>
-              <div className="card-label">GAME SESSION</div>
+              <p className="eyebrow">AI EXPO 2026</p>
 
-              <h2>Create a new game</h2>
-
-              <p className="muted">
-                Create one game code and keep it for all rounds.
-              </p>
+              <h1>
+                HOST <span>MODE</span>
+              </h1>
             </div>
 
-            <button
-              className="primary-button create-game-button"
-              onClick={createGame}
-            >
-              CREATE GAME
-            </button>
-          </section>
-        )}
+            <p className="host-heading-description">
+              Control the challenge from this screen.
+            </p>
+          </div>
 
+          {/* CREATE GAME */}
 
-        {/* ACTIVE GAME */}
-        {gameId && (
-          <>
-
-            {/* CATEGORY */}
-            <section className="host-card category-card">
-
-              <div className="section-heading">
-                <div>
-                  <div className="card-label">CATEGORY</div>
-
-                  <h2>Select Difficulty</h2>
+          {!gameId && (
+            <section className="host-card create-game-card">
+              <div>
+                <div className="card-label">
+                  GAME SESSION
                 </div>
 
-                <button
-                  className="randomize-button"
-                  onClick={randomizeQuestion}
-                  disabled={!category}
-                >
-                  RANDOMIZE QUESTION
-                </button>
+                <h2>Create a new game</h2>
+
+                <p className="muted">
+                  Create one game code and keep it for all rounds.
+                </p>
               </div>
-<div className="category-buttons">
-
-  <button
-    className={
-      category === "beginner"
-        ? "category-button beginner selected"
-        : "category-button beginner"
-    }
-    onClick={() => selectCategory("beginner")}
-  >
-    <strong>BEGINNER</strong>
-  </button>
-
-  <button
-    className={
-      category === "intermediate"
-        ? "category-button intermediate selected"
-        : "category-button intermediate"
-    }
-    onClick={() => selectCategory("intermediate")}
-  >
-    <strong>INTERMEDIATE</strong>
-  </button>
-
-  <button
-    className={
-      category === "challenge"
-        ? "category-button challenge selected"
-        : "category-button challenge"
-    }
-    onClick={() => selectCategory("challenge")}
-  >
-    <strong>CHALLENGE</strong>
-  </button>
-
-</div>
-
-              
-
-            </section>
-
-
-            {/* QUESTION */}
-            <section className="host-card question-card">
-
-              <div className="question-top">
-
-                <div>
-                  <div className="card-label">
-                    {category
-                      ? category.toUpperCase()
-                      : "WAITING FOR CATEGORY"}
-                  </div>
-
-                  <div className="question-heading">
-                    QUESTION
-                  </div>
-                </div>
-
-                <div
-                  className={
-                    timeLeft <= 5
-                      ? "timer danger"
-                      : "timer"
-                  }
-                >
-                  {timeLeft}
-                </div>
-
-              </div>
-
-
-              {!question && (
-                <div className="question-empty">
-                  <div className="waiting-icon">?</div>
-
-                  <div>
-                    <strong>WAITING FOR QUESTION</strong>
-
-                    <p>
-                      Select a category and randomize the question.
-                    </p>
-                  </div>
-                </div>
-              )}
-
-
-              {question && (
-                <div className="question-content">
-
-                  <div className="question-text">
-                    {question}
-                  </div>
-
-
-                  {currentPlayer &&
-                    roundStatus !== "correct" &&
-                    roundStatus !== "no_correct_answer" &&
-                    roundStatus !== "time_up" &&
-                    roundStatus !== "ended" && (
-                      <div className="player-turn">
-                        🎤 PLAYER {currentPlayer}'S TURN
-                      </div>
-                    )}
-
-
-                  {roundStatus === "time_up" && (
-                    <div className="status-box time">
-                      ⏰ TIME'S UP
-                      <span>NO ANSWER</span>
-                    </div>
-                  )}
-
-
-                  {roundStatus === "correct" && (
-                    <div className="status-box correct">
-                      ✓ CORRECT!
-                      <span>ROUND COMPLETE</span>
-                    </div>
-                  )}
-
-
-                  {roundStatus === "wrong" && (
-                    <div className="status-box wrong">
-                      ✕ WRONG ANSWER
-                      <span>
-                        PLAYER {currentPlayer} GETS A CHANCE
-                      </span>
-                    </div>
-                  )}
-
-
-                  {roundStatus === "no_correct_answer" && (
-                    <div className="status-box wrong">
-                      ✕ NO CORRECT ANSWER
-                      <span>ROUND COMPLETE</span>
-                    </div>
-                  )}
-
-
-                  {roundStatus === "ended" && (
-                    <div className="status-box">
-                      ROUND COMPLETE
-                    </div>
-                  )}
-
-
-                  {!currentPlayer &&
-                    roundStatus === "active" &&
-                    !timeUp && (
-                      <div className="waiting-player">
-                        Waiting for a player to buzz...
-                      </div>
-                    )}
-
-                </div>
-              )}
-
-
-              {correctAnswer && (
-                <div className="answer-preview">
-                  <div className="card-label">
-                    CORRECT ANSWER
-                  </div>
-
-                  <div className="answer-text">
-                    {correctAnswer}
-                  </div>
-                </div>
-              )}
-
-            </section>
-
-
-            {/* PLAYER / ANSWER CONTROLS */}
-            {question &&
-              roundStatus === "active" &&
-              !timeUp && (
-
-                <section className="host-card control-card">
-
-                  <div className="control-title">
-                    WHO BUZZED?
-                  </div>
-
-                  <div className="buzzer-controls">
-
-                    <button
-                      className="buzzer-button"
-                      onClick={() => playerBuzzed(1)}
-                      disabled={currentPlayer !== null}
-                    >
-                      🎤 PLAYER 1
-                    </button>
-
-                    <button
-                      className="buzzer-button"
-                      onClick={() => playerBuzzed(2)}
-                      disabled={currentPlayer !== null}
-                    >
-                      🎤 PLAYER 2
-                    </button>
-
-                  </div>
-
-                </section>
-              )}
-
-
-            {question &&
-              (roundStatus === "answering" ||
-                roundStatus === "wrong") && (
-
-                <section className="host-card control-card">
-
-                  <div className="control-title">
-                    PLAYER {currentPlayer} — ANSWER
-                  </div>
-
-                  <div className="answer-controls">
-
-                    <button
-                      className="correct-button"
-                      onClick={handleCorrect}
-                      disabled={!currentPlayer}
-                    >
-                      ✓ CORRECT
-                    </button>
-
-                    <button
-                      className="wrong-button"
-                      onClick={handleWrong}
-                      disabled={!currentPlayer}
-                    >
-                      ✕ WRONG
-                    </button>
-
-                  </div>
-
-                </section>
-              )}
-
-
-            {/* ROUND ACTIONS */}
-            {question && (
-              <section className="round-actions">
-
-                <button
-                  className="end-round-button"
-                  onClick={endRound}
-                  disabled={roundStatus === "ended"}
-                >
-                  END ROUND
-                </button>
-
-                <button
-                  className="spin-again-button"
-                  onClick={spinAgain}
-                >
-                  ↻ SPIN AGAIN
-                </button>
-
-              </section>
-            )}
-
-
-            {/* RESET */}
-            <div className="reset-area">
 
               <button
-                className="reset-button"
-                onClick={resetGame}
+                className="primary-button create-game-button"
+                onClick={createGame}
               >
-                RESET GAME
+                CREATE GAME
               </button>
+            </section>
+          )}
 
-            </div>
+          {/* ACTIVE GAME */}
 
-          </>
-        )}
+          {gameId && (
+            <>
 
-      </main>
-    </div>
-  );
-}
+              {/* CATEGORY */}
+
+              <section className="host-card category-card">
+
+                <div className="section-heading">
+                  <div>
+                    <div className="card-label">
+                      CATEGORY
+                    </div>
+
+                    <h2>Select Difficulty</h2>
+                  </div>
+
+                  <button
+                    className="randomize-button"
+                    onClick={randomizeQuestion}
+                    disabled={!category}
+                  >
+                    RANDOMIZE QUESTION
+                  </button>
+                </div>
+
+                <div className="category-buttons">
+
+                  <button
+                    className={
+                      category === "beginner"
+                        ? "category-button beginner selected"
+                        : "category-button beginner"
+                    }
+                    onClick={() =>
+                      selectCategory("beginner")
+                    }
+                  >
+                    <strong>BEGINNER</strong>
+                  </button>
+
+                  <button
+                    className={
+                      category === "intermediate"
+                        ? "category-button intermediate selected"
+                        : "category-button intermediate"
+                    }
+                    onClick={() =>
+                      selectCategory("intermediate")
+                    }
+                  >
+                    <strong>INTERMEDIATE</strong>
+                  </button>
+
+                  <button
+                    className={
+                      category === "challenge"
+                        ? "category-button challenge selected"
+                        : "category-button challenge"
+                    }
+                    onClick={() =>
+                      selectCategory("challenge")
+                    }
+                  >
+                    <strong>CHALLENGE</strong>
+                  </button>
+
+                </div>
+
+              </section>
+
+              {/* QUESTION */}
+
+              <section className="host-card question-card">
+
+                <div className="question-top">
+
+                  <div>
+                    <div className="card-label">
+                      {category
+                        ? category.toUpperCase()
+                        : "WAITING FOR CATEGORY"}
+                    </div>
+
+                    <div className="question-heading">
+                      QUESTION
+                    </div>
+                  </div>
+
+                  <div
+                    className={
+                      timeLeft <= 5
+                        ? "timer danger"
+                        : "timer"
+                    }
+                  >
+                    {timeLeft}
+                  </div>
+
+                </div>
+
+                {!question && (
+                  <div className="question-empty">
+                    <div className="waiting-icon">
+                      ?
+                    </div>
+
+                    <div>
+                      <strong>
+                        WAITING FOR QUESTION
+                      </strong>
+
+                      <p>
+                        Select a category and randomize the question.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {question && (
+                  <div className="question-content">
+
+                    <div className="question-text">
+                      {question}
+                    </div>
+
+                    {currentPlayer &&
+                      roundStatus !== "correct" &&
+                      roundStatus !== "no_correct_answer" &&
+                      roundStatus !== "time_up" &&
+                      roundStatus !== "ended" && (
+                        <div className="player-turn">
+                          🎤 PLAYER {currentPlayer}'S TURN
+                        </div>
+                      )}
+
+                    {roundStatus === "time_up" && (
+                      <div className="status-box time">
+                        ⏰ TIME'S UP
+                        <span>NO ANSWER</span>
+                      </div>
+                    )}
+
+                    {roundStatus === "correct" && (
+                      <div className="status-box correct">
+                        ✓ CORRECT!
+                        <span>ROUND COMPLETE</span>
+                      </div>
+                    )}
+
+                    {roundStatus === "wrong" && (
+                      <div className="status-box wrong">
+                        ✕ WRONG ANSWER
+                        <span>
+                          PLAYER {currentPlayer} GETS A CHANCE
+                        </span>
+                      </div>
+                    )}
+
+                    {roundStatus === "no_correct_answer" && (
+                      <div className="status-box wrong">
+                        ✕ NO CORRECT ANSWER
+                        <span>ROUND COMPLETE</span>
+                      </div>
+                    )}
+
+                    {roundStatus === "ended" && (
+                      <div className="status-box">
+                        ROUND COMPLETE
+                      </div>
+                    )}
+
+                    {!currentPlayer &&
+                      roundStatus === "active" &&
+                      !timeUp && (
+                        <div className="waiting-player">
+                          Waiting for a player to buzz...
+                        </div>
+                      )}
+
+                  </div>
+                )}
+
+                {correctAnswer && (
+                  <div className="answer-preview">
+                    <div className="card-label">
+                      CORRECT ANSWER
+                    </div>
+
+                    <div className="answer-text">
+                      {correctAnswer}
+                    </div>
+                  </div>
+                )}
+
+              </section>
+
+              {/* PLAYER / ANSWER CONTROLS */}
+
+              {question &&
+                roundStatus === "active" &&
+                !timeUp && (
+
+                  <section className="host-card control-card">
+
+                    <div className="control-title">
+                      WHO BUZZED?
+                    </div>
+
+                    <div className="buzzer-controls">
+
+                      <button
+                        className="buzzer-button"
+                        onClick={() =>
+                          playerBuzzed(1)
+                        }
+                        disabled={currentPlayer !== null}
+                      >
+                        🎤 PLAYER 1
+                      </button>
+
+                      <button
+                        className="buzzer-button"
+                        onClick={() =>
+                          playerBuzzed(2)
+                        }
+                        disabled={currentPlayer !== null}
+                      >
+                        🎤 PLAYER 2
+                      </button>
+
+                    </div>
+
+                  </section>
+                )}
+
+              {question &&
+                (roundStatus === "answering" ||
+                  roundStatus === "wrong") && (
+
+                  <section className="host-card control-card">
+
+                    <div className="control-title">
+                      PLAYER {currentPlayer} — ANSWER
+                    </div>
+
+                    <div className="answer-controls">
+
+                      <button
+                        className="correct-button"
+                        onClick={handleCorrect}
+                        disabled={!currentPlayer}
+                      >
+                        ✓ CORRECT
+                      </button>
+
+                      <button
+                        className="wrong-button"
+                        onClick={handleWrong}
+                        disabled={!currentPlayer}
+                      >
+                        ✕ WRONG
+                      </button>
+
+                    </div>
+
+                  </section>
+                )}
+
+              {/* ROUND ACTIONS */}
+
+              {question && (
+                <section className="round-actions">
+
+                  <button
+                    className="end-round-button"
+                    onClick={endRound}
+                    disabled={roundStatus === "ended"}
+                  >
+                    END ROUND
+                  </button>
+
+                  <button
+                    className="spin-again-button"
+                    onClick={spinAgain}
+                  >
+                    ↻ SPIN AGAIN
+                  </button>
+
+                </section>
+              )}
+
+              {/* RESET */}
+
+              <div className="reset-area">
+
+                <button
+                  className="reset-button"
+                  onClick={resetGame}
+                >
+                  RESET GAME
+                </button>
+
+              </div>
+
+            </>
+          )}
+
+        </main>
+      </div>
+    );
+  }
 
   // --------------------------------------------------
   // PLAYER SCREEN
@@ -1062,6 +1091,7 @@ function App() {
   if (screen === "player") {
     return (
       <div className="app">
+
         <nav className="navbar">
           <div className="logo">
             AI <span>EXPO</span> 2026
@@ -1076,8 +1106,12 @@ function App() {
         </nav>
 
         <main className="player-page">
+
           <div className="page-heading">
-            <p className="eyebrow">AI EXPO 2026</p>
+
+            <p className="eyebrow">
+              AI EXPO 2026
+            </p>
 
             <h1>
               PLAYER <span>SCREEN</span>
@@ -1087,12 +1121,14 @@ function App() {
               Watch the question and answer when you are
               called.
             </p>
+
           </div>
 
           {/* JOIN */}
 
           {!gameId && (
             <div className="join-card">
+
               <h3>JOIN GAME</h3>
 
               <input
@@ -1114,6 +1150,7 @@ function App() {
               >
                 JOIN GAME
               </button>
+
             </div>
           )}
 
@@ -1121,7 +1158,9 @@ function App() {
 
           {gameId && (
             <div className="player-game">
+
               <div className="join-card">
+
                 <p className="muted">
                   ✓ CONNECTED TO GAME
                 </p>
@@ -1129,12 +1168,17 @@ function App() {
                 <div className="game-code">
                   {playerGameCode}
                 </div>
+
               </div>
 
               {question ? (
+
                 <section className="host-card question-card">
+
                   <div className="question-top">
+
                     <div>
+
                       <div className="card-label">
                         CATEGORY
                       </div>
@@ -1144,6 +1188,7 @@ function App() {
                           ? category.toUpperCase()
                           : "—"}
                       </div>
+
                     </div>
 
                     <div
@@ -1155,9 +1200,11 @@ function App() {
                     >
                       {timeLeft}
                     </div>
+
                   </div>
 
                   <div className="question-content">
+
                     <div className="card-label">
                       QUESTION
                     </div>
@@ -1170,8 +1217,7 @@ function App() {
 
                     {currentPlayer &&
                       roundStatus !== "correct" &&
-                      roundStatus !==
-                        "no_correct_answer" &&
+                      roundStatus !== "no_correct_answer" &&
                       roundStatus !== "time_up" &&
                       roundStatus !== "ended" && (
                         <div className="time-up">
@@ -1238,17 +1284,19 @@ function App() {
                           Waiting for a player to buzz...
                         </div>
                       )}
+
                   </div>
 
                   {/* CORRECT ANSWER - PLAYER SEES IT ONLY AFTER ROUND ENDS */}
 
                   {(roundStatus === "correct" ||
-                    roundStatus ===
-                      "no_correct_answer" ||
+                    roundStatus === "no_correct_answer" ||
                     roundStatus === "time_up" ||
                     roundStatus === "ended") &&
                     correctAnswer && (
+
                       <div className="answer-preview">
+
                         <div className="card-label">
                           CORRECT ANSWER
                         </div>
@@ -1256,12 +1304,18 @@ function App() {
                         <div className="answer-text">
                           {correctAnswer}
                         </div>
+
                       </div>
                     )}
+
                 </section>
+
               ) : (
+
                 <section className="host-card question-card">
+
                   <div className="question-empty">
+
                     <div className="card-label">
                       WAITING FOR QUESTION
                     </div>
@@ -1270,11 +1324,15 @@ function App() {
                       The host is preparing the next
                       challenge...
                     </p>
+
                   </div>
+
                 </section>
               )}
+
             </div>
           )}
+
         </main>
       </div>
     );

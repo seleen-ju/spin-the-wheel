@@ -1,491 +1,556 @@
 /* =========================================================
-HOME — AI EXPO 2026
+   HOME — AI EXPO 2026
 ========================================================= */
 
 .home-page {
-width: 100%;
-min-height: calc(100vh - 76px);
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
 
-padding: 45px 5% 55px;
+  padding: 45px 5% 55px;
 
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-position: relative;
-overflow: hidden;
+  position: relative;
+  overflow: hidden;
 
-text-align: center;
+  text-align: center;
 
-background:
-linear-gradient(
-180deg,
-rgba(5, 6, 12, 0.18),
-rgba(5, 6, 12, 0.38)
-),
-url("/ai-expo-background.png");
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 6, 12, 0.18),
+      rgba(5, 6, 12, 0.38)
+    ),
+    url("/ai-expo-background.png");
 
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-isolation: isolate;
+  isolation: isolate;
 }
 
+
 /* =========================================================
-AI AMBIENT GLOW
+   AI AMBIENT GLOW
 ========================================================= */
 
 .home-page::before {
-content: "";
+  content: "";
 
-position: absolute;
-inset: 0;
+  position: absolute;
+  inset: 0;
 
-z-index: -1;
+  z-index: -1;
 
-background:
-radial-gradient(
-ellipse at 18% 50%,
-rgba(124, 58, 237, 0.22),
-transparent 38%
-),
-radial-gradient(
-ellipse at 82% 50%,
-rgba(37, 99, 235, 0.22),
-transparent 38%
-);
+  background:
+    radial-gradient(
+      ellipse at 18% 50%,
+      rgba(124, 58, 237, 0.22),
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 82% 50%,
+      rgba(37, 99, 235, 0.22),
+      transparent 38%
+    );
 
-pointer-events: none;
+  pointer-events: none;
 }
 
+
 /* =========================================================
-SUBTLE AI GRID
+   SUBTLE AI GRID
 ========================================================= */
 
 .home-page::after {
-content: "";
+  content: "";
 
-position: absolute;
-inset: 0;
+  position: absolute;
+  inset: 0;
 
-z-index: -1;
+  z-index: -1;
 
-background-image:
-linear-gradient(
-rgba(255, 255, 255, 0.025) 1px,
-transparent 1px
-),
-linear-gradient(
-90deg,
-rgba(255, 255, 255, 0.025) 1px,
-transparent 1px
-);
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
 
-background-size: 75px 75px;
+  background-size: 75px 75px;
 
-mask-image:
-radial-gradient(
-ellipse at center,
-black 0%,
-transparent 72%
-);
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      transparent 72%
+    );
 
--webkit-mask-image:
-radial-gradient(
-ellipse at center,
-black 0%,
-transparent 72%
-);
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      transparent 72%
+    );
 
-opacity: 0.4;
+  opacity: 0.4;
 
-pointer-events: none;
+  pointer-events: none;
 }
 
+
 /* =========================================================
-CONTENT
+   CONTENT
 ========================================================= */
 
 .home-content {
-width: 100%;
-max-width: 1450px;
+  width: 100%;
+  max-width: 1450px;
 
-position: relative;
-z-index: 2;
+  position: relative;
+  z-index: 2;
 
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-padding: 10px 0;
+  padding: 10px 0;
 }
 
+
 /* =========================================================
-AI EXPO 2026
+   AI EXPO 2026
 ========================================================= */
 
 .home-content .eyebrow {
-margin: 0 0 30px;
+  margin: 0 0 30px;
 
-color: #e9d5ff;
+  color: #e9d5ff;
 
-font-size: clamp(14px, 1.35vw, 20px);
+  font-size: clamp(14px, 1.35vw, 20px);
+  font-weight: 900;
 
-font-weight: 900;
+  letter-spacing: 7px;
+  text-transform: uppercase;
 
-letter-spacing: 7px;
+  text-shadow:
+    0 0 18px rgba(168, 85, 247, 0.55),
+    0 0 40px rgba(99, 102, 241, 0.22);
 
-text-transform: uppercase;
-
-text-shadow:
-0 0 18px rgba(168, 85, 247, 0.55),
-0 0 40px rgba(99, 102, 241, 0.22);
-
-position: relative;
+  position: relative;
 }
+
 
 /* Lines around AI EXPO */
 
 .home-content .eyebrow::before,
 .home-content .eyebrow::after {
-content: "";
+  content: "";
 
-display: inline-block;
+  display: inline-block;
 
-width: 75px;
-height: 1px;
+  width: 75px;
+  height: 1px;
 
-vertical-align: middle;
+  vertical-align: middle;
 
-margin: 0 20px;
+  margin: 0 20px;
 
-background:
-linear-gradient(
-90deg,
-transparent,
-rgba(168, 85, 247, 0.85)
-);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(168, 85, 247, 0.85)
+    );
 }
 
 .home-content .eyebrow::after {
-background:
-linear-gradient(
-90deg,
-rgba(99, 102, 241, 0.85),
-transparent
-);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(99, 102, 241, 0.85),
+      transparent
+    );
 }
 
+
 /* =========================================================
-MAIN TITLE
+   MAIN TITLE
 ========================================================= */
 
 .home-content h1 {
-margin: 0;
+  margin: 0;
 
-color: #ffffff;
+  color: #ffffff;
 
-font-size: clamp(85px, 10.5vw, 165px);
+  font-size: clamp(85px, 10.5vw, 165px);
 
-line-height: 0.82;
+  line-height: 0.82;
 
-letter-spacing: -9px;
+  letter-spacing: -9px;
 
-font-weight: 950;
+  font-weight: 950;
 
-text-transform: uppercase;
+  text-transform: uppercase;
 
-text-wrap: balance;
+  text-wrap: balance;
 
-text-shadow:
-0 12px 55px rgba(0, 0, 0, 0.65),
-0 0 35px rgba(255, 255, 255, 0.035);
+  text-shadow:
+    0 12px 55px rgba(0, 0, 0, 0.65),
+    0 0 35px rgba(255, 255, 255, 0.035);
 }
 
+
 /* =========================================================
-AI CHALLENGE
-PURPLE → BLUE
+   AI CHALLENGE
+   PURPLE → BLUE
 ========================================================= */
 
 .home-content h1 span {
-display: block;
+  display: block;
 
-margin-top: 25px;
+  margin-top: 25px;
 
-color: transparent;
+  color: transparent;
 
-background:
-linear-gradient(
-90deg,
-#7c3aed 0%,
-#8b5cf6 25%,
-#6366f1 58%,
-#3b82f6 82%,
-#2563eb 100%
-);
+  background:
+    linear-gradient(
+      90deg,
+      #7c3aed 0%,
+      #8b5cf6 25%,
+      #6366f1 58%,
+      #3b82f6 82%,
+      #2563eb 100%
+    );
 
-background-clip: text;
--webkit-background-clip: text;
+  background-clip: text;
+  -webkit-background-clip: text;
 
-font-size: 0.48em;
+  font-size: 0.48em;
 
-line-height: 1;
+  line-height: 1;
 
-letter-spacing: 2px;
+  letter-spacing: 2px;
 
-filter:
-drop-shadow(0 0 20px rgba(124, 58, 237, 0.28))
-drop-shadow(0 0 35px rgba(37, 99, 235, 0.16));
+  filter:
+    drop-shadow(
+      0 0 20px rgba(124, 58, 237, 0.28)
+    )
+    drop-shadow(
+      0 0 35px rgba(37, 99, 235, 0.16)
+    );
 }
 
+
 /* =========================================================
-DESCRIPTION
+   DESCRIPTION
 ========================================================= */
 
 .home-description {
-max-width: 520px;
+  max-width: 520px;
 
-margin-top: 30px;
+  margin-top: 30px;
 
-color: rgba(226, 232, 240, 0.58);
+  color: rgba(226, 232, 240, 0.58);
 
-font-size: 11px;
+  font-size: 11px;
 
-line-height: 1.6;
+  line-height: 1.6;
 
-letter-spacing: 0.4px;
+  letter-spacing: 0.4px;
 }
 
+
 /* =========================================================
-ACTION BUTTONS
+   ACTION BUTTONS
 ========================================================= */
 
 .home-actions {
-margin-top: 48px;
+  margin-top: 48px;
 
-display: flex;
+  display: flex;
 
-justify-content: center;
+  justify-content: center;
 
-gap: 20px;
+  gap: 20px;
 }
 
 .home-actions button {
-width: 270px;
-height: 74px;
+  width: 270px;
+  height: 74px;
 
-border-radius: 14px;
+  border-radius: 14px;
 
-font-size: 11px;
+  font-size: 11px;
 
-font-weight: 900;
+  font-weight: 900;
 
-letter-spacing: 2.5px;
+  letter-spacing: 2.5px;
 
-transition:
-transform 0.25s ease,
-box-shadow 0.25s ease,
-border-color 0.25s ease,
-background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
 }
 
+
 /* =========================================================
-HOST MODE
+   HOST MODE
 ========================================================= */
 
 .home-actions .primary-button {
-border: 1px solid rgba(168, 85, 247, 0.9);
+  border: 1px solid rgba(168, 85, 247, 0.9);
 
-background:
-linear-gradient(
-135deg,
-#6d28d9 0%,
-#8b5cf6 48%,
-#6366f1 100%
-);
+  background:
+    linear-gradient(
+      135deg,
+      #6d28d9 0%,
+      #8b5cf6 48%,
+      #6366f1 100%
+    );
 
-color: #ffffff;
+  color: #ffffff;
 
-box-shadow:
-0 18px 55px rgba(124, 58, 237, 0.34),
-0 0 30px rgba(124, 58, 237, 0.14),
-inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 18px 55px rgba(124, 58, 237, 0.34),
+    0 0 30px rgba(124, 58, 237, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-.home-actions .primary-button {
-transform: translateY(-5px) scale(1.015);
+.home-actions .primary-button:hover {
+  transform: translateY(-5px) scale(1.015);
 
-box-shadow:
-0 24px 70px rgba(124, 58, 237, 0.45),
-0 0 40px rgba(168, 85, 247, 0.18),
-inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 24px 70px rgba(124, 58, 237, 0.45),
+    0 0 40px rgba(168, 85, 247, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
+
 
 /* =========================================================
-PLAYER SCREEN
+   PLAYER SCREEN
 ========================================================= */
 
 .home-actions .secondary-button {
-border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
-background:
-linear-gradient(
-145deg,
-rgba(255, 255, 255, 0.09),
-rgba(255, 255, 255, 0.035)
-);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.035)
+    );
 
-color: #f8fafc;
+  color: #f8fafc;
 
-box-shadow:
-0 18px 55px rgba(0, 0, 0, 0.3),
-inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 
-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
-.home-actions .secondary-button {
-transform: translateY(-5px);
+.home-actions .secondary-button:hover {
+  transform: translateY(-5px);
 
-border-color: rgba(99, 102, 241, 0.6);
+  border-color: rgba(99, 102, 241, 0.6);
 
-background:
-linear-gradient(
-145deg,
-rgba(99, 102, 241, 0.13),
-rgba(255, 255, 255, 0.04)
-);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(99, 102, 241, 0.13),
+      rgba(255, 255, 255, 0.04)
+    );
 
-box-shadow:
-0 22px 65px rgba(37, 99, 235, 0.2),
-0 0 30px rgba(99, 102, 241, 0.1);
+  box-shadow:
+    0 22px 65px rgba(37, 99, 235, 0.2),
+    0 0 30px rgba(99, 102, 241, 0.1);
 }
+
 
 /* =========================================================
-LARGE LAPTOP
+   FULL SCREEN BUTTON
+========================================================= */
+
+.fullscreen-button {
+  position: fixed;
+
+  top: 24px;
+  right: 28px;
+
+  z-index: 100;
+
+  padding: 11px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  border-radius: 10px;
+
+  background: rgba(8, 8, 15, 0.55);
+
+  color: rgba(255, 255, 255, 0.75);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.fullscreen-button:hover {
+  transform: translateY(-2px);
+
+  background: rgba(99, 102, 241, 0.18);
+
+  border-color: rgba(139, 92, 246, 0.55);
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   LARGE LAPTOP
 ========================================================= */
 
 @media (min-width: 1100px) {
+  .home-content h1 {
+    font-size: clamp(95px, 10.5vw, 170px);
+  }
 
-.home-content h1 {
-font-size: clamp(95px, 10.5vw, 170px);
+  .home-content h1 span {
+    font-size: 0.50em;
+  }
+
+  .home-actions {
+    margin-top: 52px;
+  }
+
+  .home-actions button {
+    width: 285px;
+    height: 76px;
+  }
 }
 
-.home-content h1 span {
-font-size: 0.50em;
-}
-
-.home-actions {
-margin-top: 52px;
-}
-
-.home-actions button {
-width: 285px;
-height: 76px;
-}
-}
 
 /* =========================================================
-SHORT LAPTOP
+   SHORT LAPTOP
 ========================================================= */
 
 @media (max-height: 800px) and (min-width: 701px) {
+  .home-page {
+    padding-top: 25px;
+    padding-bottom: 30px;
+  }
 
-.home-page {
-padding-top: 25px;
-padding-bottom: 30px;
+  .home-content .eyebrow {
+    margin-bottom: 18px;
+  }
+
+  .home-content h1 {
+    font-size: clamp(72px, 8.5vw, 125px);
+  }
+
+  .home-content h1 span {
+    margin-top: 15px;
+  }
+
+  .home-description {
+    margin-top: 18px;
+  }
+
+  .home-actions {
+    margin-top: 30px;
+  }
+
+  .home-actions button {
+    height: 62px;
+  }
 }
 
-.home-content .eyebrow {
-margin-bottom: 18px;
-}
-
-.home-content h1 {
-font-size: clamp(72px, 8.5vw, 125px);
-}
-
-.home-content h1 span {
-margin-top: 15px;
-}
-
-.home-description {
-margin-top: 18px;
-}
-
-.home-actions {
-margin-top: 30px;
-}
-
-.home-actions button {
-height: 62px;
-}
-}
 
 /* =========================================================
-MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 700px) {
+  .home-page {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
 
-.home-page {
-min-height: calc(100vh - 68px);
+    padding: 35px 6%;
+  }
 
-padding: 35px 6%;
+  .home-content .eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+  }
 
-}
+  .home-content .eyebrow::before,
+  .home-content .eyebrow::after {
+    width: 20px;
+    margin: 0 8px;
+  }
 
-.home-content .eyebrow {
-font-size: 10px;
+  .home-content h1 {
+    font-size: clamp(55px, 15vw, 82px);
 
-letter-spacing: 4px;
+    letter-spacing: -5px;
+  }
 
-}
+  .home-content h1 span {
+    margin-top: 12px;
 
-.home-content .eyebrow::before,
-.home-content .eyebrow::after {
-width: 20px;
+    font-size: 0.52em;
+  }
 
-margin: 0 8px;
+  .home-description {
+    font-size: 10px;
 
-}
+    margin-top: 20px;
+  }
 
-.home-content h1 {
-font-size: clamp(55px, 15vw, 82px);
+  .home-actions {
+    width: 100%;
 
-letter-spacing: -5px;
+    flex-direction: column;
 
-}
+    margin-top: 30px;
 
-.home-content h1 span {
-margin-top: 12px;
+    gap: 10px;
+  }
 
-font-size: 0.52em;
+  .home-actions button {
+    width: 100%;
 
-}
+    height: 58px;
+  }
 
-.home-description {
-font-size: 10px;
+  .fullscreen-button {
+    top: 16px;
+    right: 16px;
 
-margin-top: 20px;
+    padding: 9px 12px;
 
-}
-
-.home-actions {
-width: 100%;
-
-flex-direction: column;
-
-margin-top: 30px;
-
-gap: 10px;
-
-}
-
-.home-actions button {
-width: 100%;
-
-height: 58px;
-
-}
+    font-size: 9px;
+  }
 }
