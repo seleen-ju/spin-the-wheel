@@ -1,7 +1,7 @@
 /* =========================================================
    GLOBAL
 ========================================================= */
-
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -341,26 +341,20 @@ button:disabled {
 }
 
 .randomize-button {
-  min-height: 40px;
-
-  padding: 0 15px;
-
-  border: 1px solid rgba(168, 85, 247, 0.4);
-
-  border-radius: 8px;
-
-  background: rgba(124, 58, 237, 0.1);
-
-  color: #c084fc;
-
-  font-size: 9px;
-
-  font-weight: 850;
-
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  color: #ffffff;
+  border: 1px solid rgba(96, 165, 250, 0.8);
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+  font-weight: 900;
   letter-spacing: 1px;
-
-  transition: 0.2s ease;
 }
+
+.randomize-button:hover {
+  background: linear-gradient(135deg, #3b82f6, #22d3ee);
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.45);
+  transform: translateY(-2px);
+}
+
 
 .randomize-button:hover:not(:disabled) {
   background: rgba(124, 58, 237, 0.2);
@@ -1113,12 +1107,29 @@ button:disabled {
 }
 
 .time-up {
-  font-size: 34px;
+  width: 100%;
+  margin: 24px 0;
+  padding: 18px 12px;
+
+  font-size: 20px !important;
   font-weight: 900;
-  text-align: center;
   line-height: 1.3;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.time-up {
+  color: #ef4444;
+}
+
+
+
+
+
 
 .player-game .question-content > .muted {
   font-size: 9px;
@@ -1367,4 +1378,11 @@ button:disabled {
 
     padding: 6px 10px;
   }
+}
+.category-button strong {
+  font-family: "Orbitron", "Arial", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
