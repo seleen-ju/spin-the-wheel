@@ -3,7 +3,7 @@
 ========================================================= */
 
 .home-page {
-  width: 555%;
+  width: 100%;
   height: 100vh;
   min-height: 100vh;
 
@@ -451,38 +451,41 @@
 }
 
 
+
 /* =========================================================
-   SHORT LAPTOP
+   STABLE DESKTOP LAYOUT
 ========================================================= */
 
-@media (max-height: 800px) and (min-width: 701px) {
+@media (min-width: 701px) {
   .home-page {
-    padding-top: 25px;
-    padding-bottom: 30px;
+    min-height: 100vh;
+    height: 100vh;
   }
 
-  .home-content .eyebrow {
-    margin-bottom: 18px;
+  .home-content {
+    max-width: 1450px;
   }
 
   .home-content h1 {
-    font-size: clamp(72px, 8.5vw, 125px);
+    font-size: clamp(80px, 9vw, 150px);
   }
 
   .home-content h1 span {
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 0.50em;
   }
 
   .home-description {
-    margin-top: 18px;
+    margin-top: 24px;
   }
 
   .home-actions {
-    margin-top: 30px;
+    margin-top: 38px;
   }
 
   .home-actions button {
-    height: 62px;
+    width: 285px;
+    height: 70px;
   }
 }
 
