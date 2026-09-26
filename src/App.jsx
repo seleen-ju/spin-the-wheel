@@ -641,11 +641,7 @@ function App() {
   if (screen === "home") {
     return (
       <div className="app">
-        <nav className="navbar">
-          <div className="logo">
-            AI <span>EXPO</span> 2026
-          </div>
-        </nav>
+      
 
         <main className="home-page">
           <div className="home-content">
