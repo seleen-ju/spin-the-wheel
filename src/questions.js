@@ -21,11 +21,11 @@ export const questions = {
       answer: "Generative Pre-trained Transformer",
     },
     {
-      question: "What is the text input you give to an AI called?",
+      question: "What is the text input given to an AI model called?",
       answer: "Prompt",
     },
     {
-      question: "What is the process of teaching an AI model called?",
+      question: "What is the process of teaching a machine learning model from data called?",
       answer: "Training",
     },
     {
@@ -37,7 +37,7 @@ export const questions = {
       answer: "Natural Language Processing (NLP)",
     },
     {
-      question: "Which AI field focuses on analyzing images and videos?",
+      question: "Which AI field focuses on understanding images and videos?",
       answer: "Computer Vision",
     },
     {
@@ -73,23 +73,23 @@ export const questions = {
       answer: "Alexa",
     },
     {
-      question: "What type of AI system recommends movies on Netflix?",
+      question: "What type of AI system recommends movies to users?",
       answer: "Recommendation System",
     },
     {
-      question: "What type of AI system recommends songs on Spotify?",
+      question: "What type of AI system recommends songs to users?",
       answer: "Recommendation System",
     },
     {
-      question: "What type of content does ChatGPT primarily generate?",
+      question: "What type of content can ChatGPT generate?",
       answer: "Text",
     },
     {
-      question: "Which AI application can automatically translate languages?",
+      question: "What technology allows computers to automatically translate one language into another?",
       answer: "Machine Translation",
     },
     {
-      question: "What is an AI system that performs one specific task called?",
+      question: "What is an AI system designed to perform a specific task called?",
       answer: "Narrow AI",
     },
     {
@@ -101,7 +101,7 @@ export const questions = {
       answer: "Application Programming Interface",
     },
     {
-      question: "What is AI that can understand and generate human language often called?",
+      question: "What type of AI can generate new content such as text, images, or audio?",
       answer: "Generative AI",
     },
     {
@@ -109,15 +109,15 @@ export const questions = {
       answer: "Facial Recognition",
     },
     {
-      question: "What is an AI program designed to have conversations with users called?",
+      question: "What is an AI program designed to communicate with users through conversation called?",
       answer: "Chatbot",
     },
     {
-      question: "Which AI tool is known for generating text responses?",
+      question: "Which AI tool is developed by OpenAI and is known for generating text responses?",
       answer: "ChatGPT",
     },
     {
-      question: "What does computer vision mainly help machines understand?",
+      question: "What can computer vision help machines understand?",
       answer: "Images and Videos",
     },
   ],
@@ -132,15 +132,15 @@ export const questions = {
       answer: "Unsupervised Learning",
     },
     {
-      question: "Predicting whether an email is spam is what type of problem?",
+      question: "Predicting whether an email is spam or not spam is what type of problem?",
       answer: "Classification",
     },
     {
-      question: "Predicting house prices is what type of problem?",
+      question: "Predicting the price of a house is what type of problem?",
       answer: "Regression",
     },
     {
-      question: "Which algorithm groups similar data points together?",
+      question: "Which algorithm groups similar data points into clusters?",
       answer: "K-Means",
     },
     {
@@ -148,7 +148,7 @@ export const questions = {
       answer: "Decision Tree",
     },
     {
-      question: "What is an input variable in machine learning called?",
+      question: "What is an input variable used by a machine learning model called?",
       answer: "Feature",
     },
     {
@@ -160,23 +160,23 @@ export const questions = {
       answer: "Convolutional Neural Network",
     },
     {
-      question: "CNNs are mainly used for what type of data?",
+      question: "CNNs are especially useful for processing what type of data?",
       answer: "Images",
     },
     {
-      question: "What advanced subset of ML uses multi-layered neural networks?",
+      question: "What branch of machine learning uses multi-layered neural networks?",
       answer: "Deep Learning",
     },
     {
-      question: "What structures in AI are inspired by the human brain?",
-      answer: "Neural Networks",
+      question: "What type of artificial network is inspired by the structure of the human brain?",
+      answer: "Artificial Neural Network",
     },
     {
       question: "What dataset is used to train a machine learning model?",
       answer: "Training Set",
     },
     {
-      question: "What dataset is used to evaluate a trained model?",
+      question: "What dataset is used to evaluate a trained model on unseen data?",
       answer: "Test Set",
     },
     {
@@ -192,27 +192,27 @@ export const questions = {
       answer: "Predict Numerical Values",
     },
     {
-      question: "What is the output of a regression model?",
+      question: "What type of value does a regression model typically predict?",
       answer: "A Numerical Value",
     },
     {
-      question: "Which learning type is useful for finding hidden patterns in data?",
+      question: "Which learning type is useful for finding hidden patterns in unlabeled data?",
       answer: "Unsupervised Learning",
     },
     {
-      question: "Decision Trees can be used for which two common tasks?",
+      question: "Decision Trees can be used for which two common machine learning tasks?",
       answer: "Classification and Regression",
     },
     {
-      question: "What metric represents how far predictions are from the true values during training?",
+      question: "What value measures how far a model's predictions are from the correct values during training?",
       answer: "Loss",
     },
     {
-      question: "What is the phase where a model learns patterns from data?",
+      question: "What is the phase in which a model learns patterns from training data?",
       answer: "Training",
     },
     {
-      question: "What is the phase where a model is evaluated on unseen data?",
+      question: "What is the phase in which a trained model is evaluated on unseen data?",
       answer: "Testing",
     },
     {
@@ -220,27 +220,27 @@ export const questions = {
       answer: "Computer Vision",
     },
     {
-      question: "Which algorithm is useful for predicting categories using a tree structure?",
+      question: "Which algorithm can predict categories using a tree structure?",
       answer: "Decision Tree",
     },
     {
-      question: "Which machine learning approach would you use when the training data has known answers?",
+      question: "Which machine learning approach should be used when the training data has known answers?",
       answer: "Supervised Learning",
     },
     {
-      question: "Which machine learning approach would you use to discover groups in unlabeled data?",
+      question: "Which machine learning approach can be used to discover groups in unlabeled data?",
       answer: "Unsupervised Learning",
     },
     {
-      question: "What is a numerical input used by a machine learning model called?",
+      question: "What is a measurable input used by a machine learning model called?",
       answer: "Feature",
     },
     {
-      question: "Which AI coding assistant integrates with Visual Studio Code?",
+      question: "Which AI coding assistant is developed by GitHub and integrates with Visual Studio Code?",
       answer: "GitHub Copilot",
     },
     {
-      question: "What is the problem when a model learns training data too closely and performs poorly on new data?",
+      question: "What is it called when a model learns the training data too closely and performs poorly on new data?",
       answer: "Overfitting",
     },
   ],
@@ -254,32 +254,32 @@ export const questions = {
     {
       question:
         "A company wants an AI assistant to answer questions using its private and frequently updated documents. What approach is most suitable?",
-      answer: "RAG",
+      answer: "Retrieval-Augmented Generation (RAG)",
     },
     {
       question:
-        "An AI confidently gives an incorrect answer that is not supported by available information. What is this called?",
+        "An AI confidently generates information that is false or unsupported by its sources. What is this called?",
       answer: "Hallucination",
     },
     {
       question:
-        "A model needs to learn from thousands of customer records without predefined categories. Which approach is suitable?",
+        "A company has a large collection of customer data with no predefined categories and wants to discover natural groups. Which approach is suitable?",
       answer: "Unsupervised Learning",
     },
     {
       question:
-        "A bank wants to predict whether a transaction is fraudulent or legitimate. What type of problem is this?",
+        "A bank wants to predict whether a transaction is fraudulent or legitimate. What type of machine learning problem is this?",
       answer: "Classification",
     },
     {
       question:
-        "A company wants to predict the future price of a house from its features. What type of problem is this?",
+        "A company wants to predict a house's selling price from its features. What type of machine learning problem is this?",
       answer: "Regression",
     },
     {
       question:
-        "An AI assistant needs to use company documents without retraining the entire model whenever a document changes. What technique is useful?",
-      answer: "RAG",
+        "An AI assistant needs to use company documents that may change frequently without retraining the entire model. What technique is useful?",
+      answer: "Retrieval-Augmented Generation (RAG)",
     },
     {
       question:
@@ -288,22 +288,22 @@ export const questions = {
     },
     {
       question:
-        "A model is trained on one task and then further trained for a specific specialized task. What is this process called?",
+        "A model is further trained on a smaller dataset for a specific task after being pre-trained. What is this process called?",
       answer: "Fine-Tuning",
     },
     {
       question:
-        "A chatbot needs to retrieve information from a database before generating an answer. Which approach combines these steps?",
-      answer: "RAG",
+        "A chatbot retrieves relevant information from a knowledge base before generating an answer. What approach combines these steps?",
+      answer: "Retrieval-Augmented Generation (RAG)",
     },
     {
       question:
-        "An AI system gives biased results because its training data contains biased examples. What issue does this demonstrate?",
+        "An AI system produces systematically different or unfair results because of biased training data. What issue does this demonstrate?",
       answer: "AI Bias",
     },
     {
       question:
-        "A model must recognize objects such as cars and people in photographs. Which neural network type is commonly used?",
+        "A model needs to recognize objects such as cars and people in photographs. Which type of neural network is commonly used for image processing?",
       answer: "CNN",
     },
     {
@@ -313,88 +313,88 @@ export const questions = {
     },
     {
       question:
-        "Which type of machine learning learns by receiving rewards or penalties?",
+        "Which type of machine learning learns through rewards and penalties?",
       answer: "Reinforcement Learning",
     },
     {
       question:
-        "A model is used to make predictions after it has already been trained. What is this process called?",
+        "A trained model receives new input and produces a prediction. What is this process called?",
       answer: "Inference",
     },
     {
       question:
-        "A developer gives an AI several examples before asking it to perform a new task. What prompting technique is being used?",
+        "A developer gives an AI model several examples of the desired task before asking it to solve a new example. What prompting technique is this?",
       answer: "Few-Shot Prompting",
     },
     {
       question:
-        "A model needs to process information where the order of the elements is important. Which neural network type was traditionally designed for sequential data?",
+        "Which type of neural network was traditionally designed to process sequential data such as time series or text?",
       answer: "RNN",
     },
     {
       question:
-        "Which architecture introduced the attention-based approach used by modern GPT-style models?",
+        "Which neural network architecture uses self-attention as a core mechanism and powers modern GPT-style models?",
       answer: "Transformer",
     },
     {
       question:
-        "A company wants to make an AI decision easier for humans to understand. What field focuses on this goal?",
+        "What field focuses on making AI model decisions easier for humans to understand?",
       answer: "Explainable AI",
     },
     {
       question:
-        "An AI model produces realistic images by having two neural networks compete with each other. What architecture is this?",
+        "An AI system generates realistic images using a generator and a discriminator that compete with each other. What architecture is this?",
       answer: "GAN",
     },
     {
       question:
-        "A model is trained on a large general dataset and then adapted to perform a specific task. What technique is being used?",
+        "A pre-trained model is adapted to perform a specialized task using additional training. What technique is being used?",
       answer: "Fine-Tuning",
     },
     {
       question:
-        "A language model has learned general patterns from a huge amount of text before being adapted to other tasks. What is this initial process called?",
+        "A language model first learns general patterns from a very large amount of data before being adapted to specific tasks. What is this initial process called?",
       answer: "Pre-training",
     },
     {
       question:
-        "An AI system must answer questions using information that was added after the model was originally trained. What approach can provide that information?",
-      answer: "RAG",
+        "An AI system needs to answer questions using information that was added after the model's original training. What approach can provide this information?",
+      answer: "Retrieval-Augmented Generation (RAG)",
     },
     {
       question:
-        "A model predicts the correct training examples but fails when given slightly different examples. What does this suggest?",
-      answer: "Poor Generalization",
-    },
-    {
-      question:
-        "A developer wants an AI model to behave differently for a specialized medical task without training a new model from scratch. What approach could be used?",
-      answer: "Fine-Tuning",
-    },
-    {
-      question:
-        "An AI system must identify whether an image contains a cat or a dog. What type of machine learning problem is this?",
-      answer: "Classification",
-    },
-    {
-      question:
-        "A model repeatedly focuses on the most relevant words when interpreting a sentence. Which Transformer mechanism enables this?",
-      answer: "Attention",
-    },
-    {
-      question:
-        "An AI system generates an answer using retrieved documents as supporting context. What architecture or approach is being used?",
-      answer: "Retrieval-Augmented Generation",
-    },
-    {
-      question:
-        "A model's performance is good during training but changes significantly when tested on unseen data. Which concept should be investigated?",
+        "A model performs well on its training examples but struggles with new examples that are slightly different. What concept should be investigated?",
       answer: "Generalization",
     },
     {
       question:
-        "What architecture is designed to generate realistic data by using a generator and a discriminator?",
-      answer: "Generative Adversarial Network",
+        "A developer wants to adapt an existing general-purpose model for a specialized task without training a completely new model. What approach could be used?",
+      answer: "Fine-Tuning",
+    },
+    {
+      question:
+        "An AI system must determine whether an image contains a cat or a dog. What type of machine learning problem is this?",
+      answer: "Classification",
+    },
+    {
+      question:
+        "Which Transformer mechanism allows the model to assign different levels of importance to different parts of the input?",
+      answer: "Attention",
+    },
+    {
+      question:
+        "An AI system generates an answer using retrieved documents as supporting context. What approach is being used?",
+      answer: "Retrieval-Augmented Generation (RAG)",
+    },
+    {
+      question:
+        "A model works well on its training data but its performance drops significantly on unseen data. Which concept describes the ability to perform well on new data?",
+      answer: "Generalization",
+    },
+    {
+      question:
+        "What architecture uses a generator and discriminator in an adversarial process to generate realistic data?",
+      answer: "Generative Adversarial Network (GAN)",
     },
   ],
 };
